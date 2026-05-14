@@ -49,9 +49,17 @@ python3 json_explore.py data.json -p data.req -H 200 -t 100
 
 ## 安装
 
-1. 将 `SKILL.md` 放到项目的 `.claude/skills/` 目录（或用户级 `~/.claude/skills/`）
-2. 将 `json_explore.py` 放在与 `SKILL.md` 同级目录
-3. （推荐）在 `settings.json` 中降低 MCP 输出阈值：
+1. 将 `json-explore/` 目录复制到 `.claude/skills/`（项目级或用户级 `~/.claude/skills/`）：
+
+```bash
+# 项目级
+cp -r json-explore /your-project/.claude/skills/
+
+# 用户级（所有项目生效）
+cp -r json-explore ~/.claude/skills/
+```
+
+2. （推荐）在 `settings.json` 中降低 MCP 输出阈值：
 
 ```json
 {
@@ -59,7 +67,7 @@ python3 json_explore.py data.json -p data.req -H 200 -t 100
 }
 ```
 
-4. （推荐）在全局提示词中添加：
+3. （推荐）在全局提示词中添加：
 
 > MCP 返回值如果被写入文件，使用 json-explore 技能渐进探索，禁止一次性 Read 大文件。
 
